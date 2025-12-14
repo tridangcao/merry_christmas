@@ -1,0 +1,880 @@
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      /* Background updated */
+      background: url('asset/2011_merry_chirstmas-wide.jpg') no-repeat center center fixed;
+      background-size: cover;
+      overflow-x: hidden;
+      text-align: center;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    /* Overlay for better text readability if background is busy */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      /* Darkens background slightly */
+      z-index: -2;
+    }
+
+    /* Tuyết rơi */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1.2rem;
+      animation: fall 8s linear infinite;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+      filter: drop-shadow(0 0 5px rgba(100, 200, 255, 0.6));
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(100vh) translateX(30px);
+        opacity: 0;
+      }
+    }
+
+    /* Trang trí ánh sáng noel */
+    .lights-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .light {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      animation: twinkle 1.5s infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.3;
+        box-shadow: 0 0 10px currentColor;
+      }
+
+      50% {
+        opacity: 1;
+        box-shadow: 0 0 20px currentColor;
+      }
+    }
+
+    h1 {
+      margin-top: 40px;
+      color: #fff;
+      font-size: 3.2rem;
+      animation: fadeIn 2s, pulse-glow 2s ease-in-out infinite;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 3px 3px 10px rgba(0, 0, 0, 0.5);
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 3px 3px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      50% {
+        text-shadow: 0 0 30px rgba(255, 215, 0, 1), 3px 3px 20px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .subtitle {
+      font-size: 1.3rem;
+      color: #ffd700;
+      margin: 10px 0 30px 0;
+      animation: fadeIn 2.5s;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .gift-box {
+      width: 200px;
+      cursor: pointer;
+      margin: 40px auto;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+      animation: bounce-in 0.8s ease-out;
+    }
+
+    @keyframes bounce-in {
+      0% {
+        transform: scale(0) rotate(-45deg);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1) rotate(0);
+        opacity: 1;
+      }
+    }
+
+    .gift-box:hover {
+      transform: scale(1.2) rotate(5deg);
+      filter: drop-shadow(0 15px 30px rgba(255, 215, 0, 0.5));
+      animation: wiggle 0.5s ease-in-out;
+    }
+
+    @keyframes wiggle {
+
+      0%,
+      100% {
+        transform: rotate(5deg) scale(1.2);
+      }
+
+      25% {
+        transform: rotate(-5deg) scale(1.2);
+      }
+
+      75% {
+        transform: rotate(8deg) scale(1.2);
+      }
+    }
+
+    /* Heart Box Styles */
+    .heart-wrapper {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 90px auto 40px;
+      /* Increased from 60px to 90px to prevent overlap */
+      z-index: 20;
+      cursor: pointer;
+      animation: heart-pulse 2s infinite ease-in-out;
+    }
+
+    /* Heart Base */
+    .heart-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: all 0.5s;
+    }
+
+    .heart-shape {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #d32f2f, #b71c1c);
+      transform: rotate(-45deg);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .heart-shape::before,
+    .heart-shape::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+      box-shadow: inherit;
+    }
+
+    .heart-shape::before {
+      top: -50%;
+      left: 0;
+    }
+
+    .heart-shape::after {
+      top: 0;
+      left: 50%;
+    }
+
+    /* Lid - darker to simulate depth or just separate layer */
+    .heart-lid {
+      position: absolute;
+      width: 102%;
+      height: 102%;
+      top: -1%;
+      left: -1%;
+      background: linear-gradient(135deg, #e53935, #c62828);
+      transform: rotate(-45deg);
+      border-radius: 15px;
+      z-index: 25;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 1s ease, opacity 1s;
+    }
+
+    .heart-lid::before,
+    .heart-lid::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: inherit;
+      box-shadow: inherit;
+    }
+
+    .heart-lid::before {
+      top: -50%;
+      left: 0;
+    }
+
+    .heart-lid::after {
+      top: 0;
+      left: 50%;
+    }
+
+    /* Ribbon & Bow */
+    .ribbon-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 30;
+      pointer-events: none;
+    }
+
+    /* The Bow Knot */
+    .bow-knot {
+      width: 40px;
+      height: 40px;
+      background: #ffd700;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 32;
+    }
+
+    /* Simple Ribbon shapes crossing the heart? 
+       For simplicity, just the bow loops and loose ends */
+    .bow-loop {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 80px;
+      height: 80px;
+      border: 8px solid #ffd700;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 31;
+    }
+
+    .bow-loop.left {
+      margin-left: -30px;
+      border-right: none;
+      border-bottom: none;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      border-radius: 40px 0 40px 40px;
+    }
+
+    .bow-loop.right {
+      margin-left: 30px;
+      border-left: none;
+      border-bottom: none;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-radius: 0 40px 40px 40px;
+    }
+
+    /* Pull strings */
+    .pull-string {
+      position: absolute;
+      top: 50%;
+      width: 150px;
+      height: 10px;
+      background: #ffd700;
+      z-index: 30;
+      border-radius: 5px;
+      transform-origin: 0% 50%;
+    }
+
+    .pull-string.left {
+      right: 50%;
+      transform: rotate(160deg);
+    }
+
+    .pull-string.right {
+      left: 50%;
+      transform: rotate(20deg);
+    }
+
+    /* Hands */
+    .hand-pull {
+      position: absolute;
+      top: 50%;
+      font-size: 60px;
+      z-index: 50;
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    .hand-pull.left {
+      left: -100px;
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    .hand-pull.right {
+      right: -100px;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    /* Animations */
+    @keyframes heart-pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Classes for animation sequence */
+    .heart-wrapper.opening {
+      animation: none;
+      /* stop pulsing */
+      cursor: default;
+    }
+
+    /* Step 1: Hands appear */
+    .heart-wrapper.step-1 .hand-pull.left {
+      opacity: 1;
+      left: 0;
+    }
+
+    .heart-wrapper.step-1 .hand-pull.right {
+      opacity: 1;
+      right: 0;
+    }
+
+    /* Step 2: Hands pull */
+    .heart-wrapper.step-2 .hand-pull.left {
+      left: -150px;
+    }
+
+    .heart-wrapper.step-2 .hand-pull.right {
+      right: -150px;
+    }
+
+    .heart-wrapper.step-2 .pull-string.left {
+      width: 250px;
+      opacity: 0;
+      transition: width 0.5s, opacity 0.5s;
+    }
+
+    .heart-wrapper.step-2 .pull-string.right {
+      width: 250px;
+      opacity: 0;
+      transition: width 0.5s, opacity 0.5s;
+    }
+
+    .heart-wrapper.step-2 .bow-knot,
+    .heart-wrapper.step-2 .bow-loop {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    /* Step 3: Hands fade out */
+    .heart-wrapper.step-3 .hand-pull {
+      opacity: 0;
+    }
+
+    /* Step 4: Lid opens */
+    .heart-wrapper.step-4 .heart-lid {
+      transform: rotate(-45deg) translateY(-200px) rotateX(45deg);
+      opacity: 0;
+    }
+
+    /* Content Reveal */
+    .gift-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      z-index: 15;
+      /* Inside the box but below lid initially? No, needs to be above base */
+      transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .gift-content img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+    }
+
+    .heart-wrapper.step-4 .gift-content {
+      transform: translate(-50%, -50%) scale(1) rotate(360deg);
+      z-index: 40;
+      /* Pop out above everything */
+    }
+
+    /* Original Confetti etc kept same */
+
+    /* Confetti pieces */
+    /* Confetti pieces - Updated to Hearts */
+    .confetti {
+      position: absolute;
+      font-size: 24px;
+      pointer-events: none;
+      z-index: 60;
+      animation-name: confetti-fall;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) rotate(0) scale(1);
+        opacity: 1;
+      }
+
+      60% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(420px) rotate(720deg) scale(0.6);
+        opacity: 0;
+      }
+    }
+
+    #surprise-section {
+      display: none;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      animation: fadeIn 1.5s, slideUp 1s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .img-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      perspective: 1000px;
+    }
+
+    .img-card {
+      background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(255, 215, 0, 0.3);
+      animation: pop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      transition: all 0.3s ease;
+      border: 3px solid #c41e3a;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: rotate(45deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    .img-card:hover {
+      transform: translateY(-10px) scale(1.05) rotateY(5deg);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 215, 0, 0.5);
+    }
+
+    .img-card img {
+      width: 280px;
+      border-radius: 15px;
+      position: relative;
+      z-index: 1;
+      filter: brightness(1) contrast(1.1);
+      transition: filter 0.3s ease;
+    }
+
+    .img-card:hover img {
+      filter: brightness(1.1) contrast(1.15);
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(0.6) rotateX(80deg);
+        opacity: 0;
+      }
+
+      70% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1) rotateX(0);
+        opacity: 1;
+      }
+    }
+
+    .message {
+      font-size: 1.6rem;
+      color: #fff;
+      margin: 30px auto;
+      animation: fadeIn 2s;
+      font-weight: bold;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(196, 30, 58, 0.6);
+      background: linear-gradient(135deg, #c41e3a, #165b33);
+      padding: 20px 40px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      border: 2px solid #ffd700;
+    }
+
+    /* icon tuần lộc */
+    .reindeer {
+      position: fixed;
+      width: 140px;
+      top: 20px;
+      animation: float 4s ease-in-out infinite, sway 3s ease-in-out infinite;
+      filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+      z-index: 10;
+    }
+
+    .reindeer.left {
+      left: 15px;
+    }
+
+    .reindeer.right {
+      right: 15px;
+      transform: scaleX(-1);
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes sway {
+
+      0%,
+      100% {
+        transform: translateX(0) scaleX(1);
+      }
+
+      50% {
+        transform: translateX(10px) scaleX(1);
+      }
+    }
+
+    .reindeer.right {
+      animation: float 4s ease-in-out infinite, sway-right 3s ease-in-out infinite;
+    }
+
+    @keyframes sway-right {
+
+      0%,
+      100% {
+        transform: translateX(0) scaleX(-1);
+      }
+
+      50% {
+        transform: translateX(-10px) scaleX(-1);
+      }
+    }
+
+    /* Sparkles */
+    .sparkle {
+      position: absolute;
+      pointer-events: none;
+      animation: sparkle-burst 1s ease-out forwards;
+    }
+
+    @keyframes sparkle-burst {
+      0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0);
+      }
+    }
+
+
+    /* Responsive Design for Mobile (including 1080x2340) */
+    /* Responsive Design for Mobile (including 1080x2340) */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+        margin-top: 50px;
+        /* Space for dynamic Notch/Status bar */
+        padding: 0 10px;
+        position: relative;
+        z-index: 100;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+        /* Ensure readability */
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+        color: #fff;
+        /* Ensure contrast */
+        text-shadow: 0 0 5px #000;
+      }
+
+      /* Reindeer Positioning for Mobile */
+      .reindeer {
+        width: 80px;
+        /* Small size */
+        position: fixed;
+        /* Keep them in view */
+        top: 50%;
+        /* Center vertically initially */
+        margin-top: -40px;
+        /* Adjust for half height */
+        z-index: 15;
+        /* Behind box if they overlap, or side */
+        opacity: 0.9;
+        /* Animation already applied globally (float/sway) */
+      }
+
+      .reindeer.left {
+        left: 5px;
+      }
+
+      .reindeer.right {
+        right: 5px;
+        transform: scaleX(-1);
+        /* Correct flip for Judy */
+      }
+
+      /* Ensure animation stays valid with the transform flip */
+      .reindeer.right {
+        animation: float 4s ease-in-out infinite, sway-right 3s ease-in-out infinite;
+      }
+
+      .heart-wrapper {
+        margin: 20px auto;
+        /* Center on screen */
+        z-index: 20;
+        /* Above reindeer if overlap */
+      }
+
+      .img-card img {
+        width: 100%;
+        max-width: 280px;
+      }
+
+      .message {
+        width: 90%;
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+    }
+
+    /* Specific adjustments for tall phone screens (like 1080x2340) */
+    @media (min-height: 800px) and (max-width: 768px) {
+      body {
+        /* Ensure content is vertically centered if sparse, or just spaced better */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      h1 {
+        margin-top: 100px;
+        /* Push down further on tall screens */
+      }
+
+      .heart-wrapper {
+        margin-top: 80px;
+      }
+    }
+
+    /* iPhone 14 Pro Max Specifics (430px width roughly) & Dynamic Island Area */
+    @media only screen and (max-width: 430px) and (min-height: 900px) {
+      h1 {
+        margin-top: 70px;
+        /* Clear Dynamic Island */
+      }
+
+      .reindeer {
+        width: 75px;
+        /* Slightly smaller to ensure fit */
+      }
+
+      .heart-wrapper {
+        margin-top: 60px;
+        /* Balance with header */
+      }
+    }
+
+    /* Large Desktop Screens (Full HD and up) */
+    @media (min-width: 1600px) {
+      h1 {
+        font-size: 4.5rem;
+        margin-top: 60px;
+      }
+
+      .subtitle {
+        font-size: 1.8rem;
+      }
+
+      .gift-box,
+      .heart-wrapper {
+        transform: scale(1.3);
+        /* Scale up the box on big screens */
+        margin-top: 80px;
+      }
+
+      /* Keep hover effect relative to the new scale */
+      .gift-box:hover {
+        transform: scale(1.5) rotate(5deg);
+      }
+
+      .reindeer {
+        width: 200px;
+        /* Larger reindeer for big screens */
+      }
+
+      .reindeer.left {
+        left: 40px;
+      }
+
+      .reindeer.right {
+        right: 40px;
+      }
+
+      /* Additional spacing for surprise section on desktop */
+      #surprise-section {
+        margin-top: 150px;
+      }
+    }
+
+    /* Standard Desktop (non-4k) adjust */
+    @media (min-width: 1024px) {
+      #surprise-section {
+        margin-top: 120px;
+      }
+    }
+
+    /* Optimized for Samsung A56 logic (approx 390-412px width range + tall) */
+    @media screen and (min-width: 360px) and (max-width: 420px) and (min-height: 800px) {
+      h1 {
+        margin-top: 80px;
+        /* More space for camera hole */
+        font-size: 1.7rem;
+      }
+
+      .heart-wrapper {
+        margin-top: 50px;
+        margin-bottom: 50px;
+        transform: scale(0.95);
+        /* Fit comfortably */
+      }
+
+      .reindeer {
+        top: 55%;
+        /* Move down a bit to not conflict with box open */
+      }
+
+      #surprise-section {
+        margin-top: 20px;
+      }
+    }
+
+    /* Optimized for iPhone 15 Plus (approx 430px width + Dynamic Island) */
+    @media screen and (min-width: 425px) and (max-width: 450px) and (min-height: 900px) {
+      h1 {
+        margin-top: 90px;
+        /* Dynamic Island clearance */
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .heart-wrapper {
+        margin-top: 60px;
+        transform: scale(1.1);
+        /* Use the extra space */
+      }
+
+      .reindeer {
+        width: 90px;
+        top: 50%;
+      }
+    }
